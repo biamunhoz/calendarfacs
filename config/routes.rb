@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :salas, path: 'equipamentos'
   resources :agendas
   resources :events
+  resources :senha_resets
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   #inscricao e permissao
@@ -45,7 +46,6 @@ Rails.application.routes.draw do
   get 'login_ext' => 'session#new', as: 'login_ext'
   post 'login_ext' => 'session#create'
   get 'logout_ext' => 'session#destroy', as: 'logout_ext'
-
 
   #root 'welcome#login'
 
