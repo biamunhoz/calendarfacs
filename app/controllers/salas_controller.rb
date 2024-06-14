@@ -137,15 +137,22 @@ class SalasController < ApplicationController
     @agenda = Inscricao.joins(:usuario).joins(:agenda).where("usuarios.loginUsuario = ? and usertipo = 'Admin'", session[:login]).select("agenda_id, nome")
 
     @sala = Sala.new
+    
   end
 
   # GET /salas/1/edit
   def edit
+
+     #Alterado botão Novo equipamento
+    @agenda = Inscricao.joins(:usuario).joins(:agenda).where("usuarios.loginUsuario = ? and usertipo = 'Admin'", session[:login]).select("agenda_id, nome")
+
   end
 
   # POST /salas
   # POST /salas.json
   def create
+  
+
     @sala = Sala.new(sala_params)
 
     respond_to do |format|
