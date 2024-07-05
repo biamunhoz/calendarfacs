@@ -1,14 +1,51 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+      $('#eventolista').dataTable ({
+          "iDisplayLength": 30, 
+          "bPaginate": true,    
+          "sPaginationType":"full_numbers", 
+          "bJQueryUI":true,
+          "bLengthChange":false, 
+          "ordering":     true, 
+          "aaSorting":    [[0, "asc"]],  
+          "columnDefs": [
+                    { "targets": [1],
+                      "visible": true,
+                      "orderData": [0]
+                    },
+                    { "targets": [0],
+                      "visible": false
+                    }
+              ],   
+          "oLanguage": { 
+              "sInfo":              "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+              "sInfoFiltered":      "Filtrado de _MAX_ registros no total",
+              "sInfoEmpty":         "Sem resultados",
+              "sZeroRecords":       "Sem resultados",
+              "sSearch":            "Buscar",
+              "oPaginate": {
+                  "sFirst":         "Primeiro",
+                  "sPrevious":      "Anterior",
+                  "sNext":          "Próximo",
+                  "sLast":          "Ultimo"
+              }
+          }
+      })
+  })
+</script>
+
 <h1>Eventos</h1>
 
-<table class="table table-striped table-bordered table-hover table-condensed">
+<table class="table table-bordered display" id="eventolista">
   <thead>
     <tr>
+      <th></th>
       <th>Sala/Equipamento</th>
       <th>Título</th>
       <th>Registrado para</th>
       <th>Usuário que marcou</th>
-      <th>Data/Hora inicial</th>
-      <th>Data/Hora final</th>
+      <th>Início</th>
+      <th>Fim</th>
 
       <th>Ação</th>
       <th>Ação</th>
@@ -21,6 +58,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= event.start_date.strftime("%Y/%m/%d") + " - " + event.timeini.strftime("%H:%M") %></td>
         <td><%= event.sala.nome %></td>
         <td><%= event.title %></td>
         <td><%= event.registropara %> </td>
