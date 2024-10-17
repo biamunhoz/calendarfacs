@@ -18,7 +18,7 @@
         </tr> 
         <tr>
         <% end %>        
-            <td> <%= sala.nome %> <input type="color" id="favcolor" name="favcolor" disabled value="<%= sala.cor %>">  </td>
+            <td> <%= sala.nome %> <input type="color" id="favcolor" name="favcolor" disabled value="<%= sala.cor %>"></td>
         <% if agendaatual == ""  or agendaatual != sala.agenda.nome  %>
             </tr>
         <% end %>
